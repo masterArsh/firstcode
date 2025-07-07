@@ -1,0 +1,74 @@
+<html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input[type="button"] {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      margin: 2px;
+    }
+    #result {
+      width: 170px;
+      height: 40px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h2>Calculator</h2>
+  <input type="text" id="result" readonly>
+  <br>
+  <input type="button" value="1" onclick="appendNumber('1')">
+  <input type="button" value="2" onclick="appendNumber('2')">
+  <input type="button" value="3" onclick="appendNumber('3')">
+  <input type="button" value="+" onclick="appendOperator('+')">
+  <br>
+  <input type="button" value="4" onclick="appendNumber('4')">
+  <input type="button" value="5" onclick="appendNumber('5')">
+  <input type="button" value="6" onclick="appendNumber('6')">
+  <input type="button" value="-" onclick="appendOperator('-')">
+  <br>
+  <input type="button" value="7" onclick="appendNumber('7')">
+  <input type="button" value="8" onclick="appendNumber('8')">
+  <input type="button" value="9" onclick="appendNumber('9')">
+  <input type="button" value="*" onclick="appendOperator('*')">
+  <br>
+  <input type="button" value="0" onclick="appendNumber('0')">
+  <input type="button" value="C" onclick="clearResult()">
+  <input type="button" value="=" onclick="calculate()">
+  <input type="button" value="/" onclick="appendOperator('/')">
+
+  <script>
+    let expression = "";
+
+    function appendNumber(number) {
+      expression += number;
+      document.getElementById("result").value = expression;
+    }
+
+    function appendOperator(operator) {
+      expression += operator;
+      document.getElementById("result").value = expression;
+    }
+
+    function clearResult() {
+      expression = "";
+      document.getElementById("result").value = "";
+    }
+
+    function calculate() {
+      try {
+        expression = eval(expression).toString();
+        document.getElementById("result").value = expression;
+      } catch {
+        document.getElementById("result").value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
